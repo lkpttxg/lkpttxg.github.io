@@ -3,11 +3,11 @@
   <title>TXG`Blog</title>
   
   <subtitle>da da da.</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://lkpttxg.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://lkpttxg.github.io/"/>
   <updated>2022-10-02T14:52:10.978Z</updated>
-  <id>http://example.com/</id>
+  <id>https://lkpttxg.github.io/</id>
   
   <author>
     <name>LKPTTXG</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/posts/4a17b156.html"/>
-    <id>http://example.com/posts/4a17b156.html</id>
+    <link href="https://lkpttxg.github.io/posts/4a17b156.html"/>
+    <id>https://lkpttxg.github.io/posts/4a17b156.html</id>
     <published>2022-10-02T07:20:59.486Z</published>
     <updated>2022-10-02T14:52:10.978Z</updated>
     
