@@ -111,3 +111,12 @@ details.folding-tag {
 #article-container code {
   font-family: TXG !important;
 }
+
+span.nota:hover{
+  color: orange !important;
+}
+
+span.nota {
+  color: pink !important;
+}
+

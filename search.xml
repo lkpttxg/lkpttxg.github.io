@@ -4,160 +4,27 @@
   
     
     <entry>
-      <title>日记—2022-10-29</title>
-      <link href="/posts/8a420464.html"/>
-      <url>/posts/8a420464.html</url>
+      <title>Visual Studio 2019 + QT 5.14.2 + QGIS 3.16 （RELEASE版）</title>
+      <link href="/posts/39c6c8ee.html"/>
+      <url>/posts/39c6c8ee.html</url>
       
-        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p>玩儿~~~</p></div><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"><p>玩儿~~~</p></div><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>此处省略一万字</p></div><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
+        <content type="html"><![CDATA[<div class="tip info"><p>本文章记录近日进行的 <strong><span class='nota' data-nota='调用 QGIS 的方法参与自己 GIS 应用的开发'>QGIS 二次开发</span></strong> 的环境配置历程。一方面就我所用的环境与版本，给出一个能够正常调用与运行的配置；另一方面就为什么这样配置（原理），以及如何处理配置过程中出现的 Bug 进行解释。相信你如果理解这里面的原理，就算你配置过程出错了，你也可以自己去独立解决了。</p></div><div class="note green icon-padding flat"><i class="note-icon fa fa-paperclip"></i><p>本教程版本需知：<strong>2022 年 11 月</strong>有效。版本说明如下：</p><ul><li><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-windows"></use></svg> <strong>本机系统</strong>：Window <strong>10</strong> 系统</li><li><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-VisualStudio"></use></svg> <strong>Visual Studio 版本</strong>：Visual Studio <strong>2019</strong> Community 版</li><li><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-weibiaoti-"></use></svg> <strong>QT 版本</strong>：QT <strong>5.14.2</strong> 版本</li><li><svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-qgis"></use></svg> <strong>QGIS版本</strong>： <strong>3.16</strong> LTR 版本，具体至 <strong><span class='nota' data-nota='版本号的格式为：主版本号.子版本号.阶段版本号（such as 1.1.1）。 其中阶段版本号的变更只是如 Bug 修复这样的小改动'>阶段版本号</span></strong> 为 <strong>3.16.16</strong>。</li></ul><p>之间的<strong>版本关系</strong>具体看下面各个软件的安装说明。</p></div><hr/><h2 id="一、Visual-Studio-2019-集成开发环境安装"><a href="#一、Visual-Studio-2019-集成开发环境安装" class="headerlink" title="一、Visual Studio 2019 集成开发环境安装"></a>一、Visual Studio 2019 集成开发环境安装</h2><details class="folding-tag" cyan><summary> Visual Studio 2019 安装 </summary>              <div class='content'>              <div class="tabs" id="vs-anzhuanf"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#vs-anzhuanf-1">1. <svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-VisualStudio"></use></svg> Visual Studio 配置的原理</button></li><li class="tab"><button type="button" data-href="#vs-anzhuanf-2">2. <svg class="icon" style="width:1em; height:1em" aria-hidden="true"><use xlink:href="#icon-VisualStudio"></use></svg> Visual Studio 的下载与安装步骤</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="vs-anzhuanf-1"><div class="note info flat"><p>Visual Studio 可以作为 C++ 的集成开发环境，但不是唯一的。比如 QT 官方专门针对 QT 程序开发提供了 QT Creator 这个集成开发环境，所以我们也可以利用 QT Creator 进行 QGIS 的二次开发（当然还有很多其它的集成开发环境，如 VSCode 等也能进行 C++ 开发）。之所以选择 Visual Studio 主要原因是这个软件发展的足够好， 能够方便的引入 QT 开发库和 QGIS 开发库。另外，<strong>Visual Studio 的版本只要是可以正常使用的版本就行，2015，2017，2019 均可，不过目前 2019 已经很稳定了，推荐使用</strong>。</p></div><p><p>总之，集成开发环境（IDE）只是一个工具，用来运行一种语言的代码的环境。对 Visual Studio 而言，它本身没有 QT 开发的库 和 QGIS 开发的库，本身是不可以进行 QGIS 二次开发的，但我们可以指定这个工具去将这些<strong>库引进来</strong>，那么你在写 C++ 的代码的时候，就可以去调 QGIS 的功能和方法了。</p></p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/2.png" style="width:80%;"/></div></div><div><br/>&emsp;正如上面图所示，我们的目标其实<emp>非常简单</emp>：<span class='p red'>把需要用到的 QT 和 QGIS 的库引进 Visual Studio。</span>(其它 IDE 同理，所以用 QT Creator 和 VsCode 也是可以进行 QGIS 二次开发的，只要引入开发需要的库就行)</div><div>&emsp;这样，<span class='p purple'>成功引进来并可以在代码中像调标准 C/C++ 库那样正确不报错的使用</span>就是我们的开发环境配置成功了。 </div><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="vs-anzhuanf-2"><ol><li><p><strong>下载：</strong>Visual Studio 2019 社区版下载地址（存在我的服务器上的）：</p><div><a class="tag-Link" target="_blank" href=" https://cdn.lkpttxg.cn/txgblog/software/vs2019_community.exe"> <div class="tag-link-tips">一个站外地址嗷,不保证站点的可用性与安全性~</div> <div class="tag-link-bottom">     <div class="tag-link-left" style="background-image: url(/img/siteicon/64.png);"></div>     <div class="tag-link-right">         <div class="tag-link-title">Visual Studio Installer</div>         <div class="tag-link-sitename">点击下载</div>     </div>     <i class="fa-solid fa-angle-right"></i> </div> </a></div><div><br/><div class="note info flat"><p>该文件仅 1.39 MB，是 VS 2019 Community 简体中文版的一个安装引导程序，启动后勾选需要的组建即可进行<strong>在线下载安装</strong>。</p></div></div></li><li><p><strong>安装 VS 2019：</strong><br>（1）下载 VS2019 会得到一个名为 <code>&quot;vs2019_community&quot;</code> 的可执行文件，<strong>双击</strong>打开它，会弹出如下界面：<br><img src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/3.png" width="80%"><span class='p center'>图 1 启动安装前的配置界面</span>（2）点击 “继续”，会进入如下界面：<br><img src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/4.png" width="80%"><span class='p center'>图 2 下载和安装必要的配置文件</span>（3）待两个进度条全部达到 100% 后，会自行弹出如下界面：<img src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/5.png" width="80%"><span class='p center'>图 3 安装配置界面</span>（4）VS 2019 除了支持 <strong>C/C++</strong> 开发，还支持 C#、F#、Visual Basic 等开发语言，我们没有必要安装所有的组件，只需要安装 <strong>“使用C++ 的桌面开发”</strong> 即可。此外，您可以<strong>选择 VS 2019 的安装路径</strong>（例如我将其安装到 D 盘下的 VS2019 文件夹中），最终点击 <strong>“安装”</strong> 按钮，进入如图所示的界面：<br><div class="note info flat"><p>“使用C++ 的桌面开发” 就类似于我们引入基本的 C/C++ 的开发库。</p></div><img src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/6.png" width="80%"><span class='p center'>图 4 下载并安装 VS2019</span>（5）耐心等待两个进度条全部为 100%，可能会弹出下面的窗口，提示我们“安装成功，需要重启计算机”，重启即可。<br><img src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/7.png" width="80%"><span class='p center'>图 5 安装成功，重新启动提示界面</span>（6）重新启动后进入“开始”菜单，会看到已安装好的 VS2019：<br><img src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/8.png" width="80%"><span class='p center'>图 6 安装好的 VS 2019</span>（7）打开 VS 2019 会弹出如下界面：<br><div class="note success flat"><p>打开 VS 的主题颜色可能不一致，我这个是主题为 <code>dark</code> 的启动界面。有些可能就是<strong>高亮白色</strong>的启动界面，这些都没什么关系，可以进入项目在主题中改。</p></div><img src="https://cdn.lkpttxg.cn/txgblog/img/posts/39c6c8ee/9.png" width="80%"><span class='p center'>图 7 打开 VS 2019</span></p></li></ol><p>由此，表示我们成功安装好了 Visual Studio 2019。</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>              </div>            </details>]]></content>
       
       
       <categories>
           
-          <category> mydiary </category>
+          <category> QGIS开发 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 日记 </tag>
+            <tag> QGIS </tag>
             
-            <tag> 日常学习 </tag>
+            <tag> QT </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>日记—2022-10-28</title>
-      <link href="/posts/fd4534f2.html"/>
-      <url>/posts/fd4534f2.html</url>
-      
-        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p>进行文献汇报辣，而且全校全寝室静默了</p></div><p>第一次进行文献汇报，有很多内容，差点PPT没做完，一直到 11 点。</p><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"><p>玩儿~~~</p></div><h3 id="文献精读第二遍"><a href="#文献精读第二遍" class="headerlink" title="文献精读第二遍"></a>文献精读第二遍</h3><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>此处省略一万字</p></div><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> mydiary </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-            <tag> 日常学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>日记—2022-10-27</title>
-      <link href="/posts/6dfa2963.html"/>
-      <url>/posts/6dfa2963.html</url>
-      
-        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p>~~~</p></div><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"><p>文献阅读</p></div><h3 id="文献阅读QaQ"><a href="#文献阅读QaQ" class="headerlink" title="文献阅读QaQ"></a>文献阅读QaQ</h3><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>RabbitMQ的学习</p></div><h3 id="RabbitMQ的学习"><a href="#RabbitMQ的学习" class="headerlink" title="RabbitMQ的学习"></a>RabbitMQ的学习</h3><p>学习了几小节，对消费者——生产者模型认识，以及实现消息持久化、预处理值、发布确认等内容的应用 …</p><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> mydiary </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-            <tag> 日常学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>日记—2022-10-26</title>
-      <link href="/posts/1afd19f5.html"/>
-      <url>/posts/1afd19f5.html</url>
-      
-        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p>~~~</p></div><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"></div><h3 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h3><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>此处省略一万字</p></div><h3 id="RabbitMQ的学习"><a href="#RabbitMQ的学习" class="headerlink" title="RabbitMQ的学习"></a>RabbitMQ的学习</h3><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> mydiary </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-            <tag> 日常学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>日记—2022-10-25</title>
-      <link href="/posts/83f4484f.html"/>
-      <url>/posts/83f4484f.html</url>
-      
-        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p>~~~</p></div><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"><p>遇到论文</p></div><h3 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h3><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>此处省略一万字</p></div><h3 id="RabbitMQ的学习"><a href="#RabbitMQ的学习" class="headerlink" title="RabbitMQ的学习"></a>RabbitMQ的学习</h3><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> mydiary </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-            <tag> 日常学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>日记—2022-10-24</title>
-      <link href="/posts/f4f378d9.html"/>
-      <url>/posts/f4f378d9.html</url>
-      
-        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p>~~~</p></div><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"></div><h3 id="HTTPS-加密流程！！！（关键是-CA-的作用）"><a href="#HTTPS-加密流程！！！（关键是-CA-的作用）" class="headerlink" title="HTTPS 加密流程！！！（关键是 CA 的作用）"></a>HTTPS 加密流程！！！（关键是 CA 的作用）</h3><h3 id="Nginx-基础篇告一段落，开始-RabbitMQ"><a href="#Nginx-基础篇告一段落，开始-RabbitMQ" class="headerlink" title="Nginx 基础篇告一段落，开始 RabbitMQ"></a>Nginx 基础篇告一段落，开始 RabbitMQ</h3><h3 id="论文阅读"><a href="#论文阅读" class="headerlink" title="论文阅读"></a>论文阅读</h3><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>此处省略一万字</p></div><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> mydiary </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 日记 </tag>
-            
-            <tag> 日常学习 </tag>
+            <tag> C/C ++ </tag>
             
         </tags>
       
@@ -170,7 +37,7 @@
       <link href="/posts/6a97ed7a.html"/>
       <url>/posts/6a97ed7a.html</url>
       
-        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p>~~~~</p></div><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"><p>Nginx 学习</p></div><h3 id="usr-lib-systemd-system-与-etc-systemd-system-关系"><a href="#usr-lib-systemd-system-与-etc-systemd-system-关系" class="headerlink" title="/usr/lib/systemd/system/ 与 /etc/systemd/system 关系"></a>/usr/lib/systemd/system/ 与 /etc/systemd/system 关系</h3><h3 id="Nginx-虚拟主机选择策略"><a href="#Nginx-虚拟主机选择策略" class="headerlink" title="Nginx 虚拟主机选择策略"></a>Nginx 虚拟主机选择策略</h3><p>访问内容：域名（主机名） + 端口</p><ol><li>如果是域名（主机名），则解析为 ip<ul><li>ip:端口 都存在，执行第2步</li><li>ip:端口 不存在，访问失败</li></ul></li><li>遍历 Nginx 中的所有虚拟主机，寻找可以匹配 <code>域名:端口</code> 的组合<div class="note info flat"><ul><li>匹配成功：（hostname = 域名， listen = 端口）访问<code>第一个完全匹配</code>的主机。</li><li>（若找不到<code>域名:端口</code>一致的虚拟主机，或原本就是 <code>ip:端口</code> 访问）直接寻找<code>第一个端口匹配</code>的虚拟主机。</li></ul></div><ul><li>匹配成功，根据 <code>location</code> 进行 <code>URI</code> 定位</li><li>匹配失败，则访问失败。</li></ul></li></ol><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>此处省略一万字~~</p></div><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
+        <content type="html"><![CDATA[<div class="tip info"><p>🥣日常记录自己的🥃生活与🍹学习，有时按⏱时间记录，有时按照不同🏯模块记录，既作为📔日记又作为📈schedule table。</p></div><hr/><h2 id="Good-morning🌼"><a href="#Good-morning🌼" class="headerlink" title="Good morning🌼"></a>Good morning🌼</h2><div class="note pink icon-padding flat"><i class="note-icon fa fa-cog"></i><p><del>后续的日记隐藏了，还是个人太懒了</del></p></div><hr/><h2 id="主要的下午☕"><a href="#主要的下午☕" class="headerlink" title="主要的下午☕"></a>主要的下午☕</h2><div class="note success flat"><p>Nginx 学习</p></div><h3 id="usr-lib-systemd-system-与-etc-systemd-system-关系"><a href="#usr-lib-systemd-system-与-etc-systemd-system-关系" class="headerlink" title="/usr/lib/systemd/system/ 与 /etc/systemd/system 关系"></a>/usr/lib/systemd/system/ 与 /etc/systemd/system 关系</h3><h3 id="Nginx-虚拟主机选择策略"><a href="#Nginx-虚拟主机选择策略" class="headerlink" title="Nginx 虚拟主机选择策略"></a>Nginx 虚拟主机选择策略</h3><p>访问内容：域名（主机名） + 端口</p><ol><li>如果是域名（主机名），则解析为 ip<ul><li>ip:端口 都存在，执行第2步</li><li>ip:端口 不存在，访问失败</li></ul></li><li>遍历 Nginx 中的所有虚拟主机，寻找可以匹配 <code>域名:端口</code> 的组合<div class="note info flat"><ul><li>匹配成功：（hostname = 域名， listen = 端口）访问<code>第一个完全匹配</code>的主机。</li><li>（若找不到<code>域名:端口</code>一致的虚拟主机，或原本就是 <code>ip:端口</code> 访问）直接寻找<code>第一个端口匹配</code>的虚拟主机。</li></ul></div><ul><li>匹配成功，根据 <code>location</code> 进行 <code>URI</code> 定位</li><li>匹配失败，则访问失败。</li></ul></li></ol><hr/><h2 id="最后の晚上🍚"><a href="#最后の晚上🍚" class="headerlink" title="最后の晚上🍚"></a>最后の晚上🍚</h2><div class="note info flat"><p>此处省略一万字~~</p></div><hr/><h2 id="chit-chat🐚"><a href="#chit-chat🐚" class="headerlink" title="chit-chat🐚"></a>chit-chat🐚</h2><p>此处省略一千字~~</p>]]></content>
       
       
       <categories>
@@ -460,11 +327,22 @@
     
     
     <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/css/post.css"/>
       <url>/css/post.css</url>
       
-        <content type="html"><![CDATA[/* 文章内字体统一大小 */#post #article-container{  font-size: 16px;}/* post 文章中链接的样式 *//* tip 栏的链接 */#post #article-container  a:hover{  background-color: #ccd0d7;  border-radius: 8px;}#post #article-container  a {  border-color: #ccd0d7;  border-bottom-style: solid;}#post #article-container .tip a {  color: rgb(36, 35, 35) !important;  font-weight: bold;  border-color: hotpink;  /* border-radius: 2px; */  border-bottom-style: solid;}/* #post #article-container a > u{  border-bottom: solid;  border-color: hotpink;} */#post #article-container .tip a:hover{  background-color: hotpink !important;  border-radius: 8px;}/* 文章全屏 */.post .layout {    max-width: none;}/* 侧边栏目录样式 */.aside-content #card-toc {  font-family: TXGBlog;  overflow: auto;}/* 文章tabs */#article-container .tabs {  margin: 1rem 0!important;  border-radius: 12px;  overflow: hidden;  box-shadow: red;  border: 1px solid #ccd0d7 !important;}#article-container .tabs > .nav-tabs > .tab.active button {  border-bottom: 2px solid #49b1f5;  border-top: none;}#article-container .tabs > .nav-tabs > .tab button {  border-top: none;}/*哔哩哔哩视频适配*/.aspect-ratio {position: relative;width: 100%;height: 0;padding-bottom: 75%;margin: 3% auto;text-align: center;}      .aspect-ratio iframe {    position: absolute;    width: 100%;    height: 100%;    left: 0;    top: 0;}/* 折叠框中的文字 */details.folding-tag {  font-size: 16px !important;}#article-container img {  margin: 0 auto!important;}#post #article-container a.ghcard {  border-bottom-style: none;}/* code中的字体大小 */#article-container pre, #article-container code {  font-size: 16px;}/* tip 样式新增 class */.tip.green {  background: linear-gradient(230deg, #47c0e0, #2dc342);  text-shadow: 0 -1px #1bcdfc;  box-shadow: 0 3px 5px #20b1ad;}.tip.green::before {  background: linear-gradient(230deg, #47c0e0, #2dc342);  text-shadow: 0 -1px #1bcdfc;  /* box-shadow: 0 3px 5px #20b1ad; */}#article-container code {  font-family: TXG !important;}]]></content>
+        <content type="html"><![CDATA[/* 文章内字体统一大小 */#post #article-container{  font-size: 16px;}/* post 文章中链接的样式 *//* tip 栏的链接 */#post #article-container  a:hover{  background-color: #ccd0d7;  border-radius: 8px;}#post #article-container  a {  border-color: #ccd0d7;  border-bottom-style: solid;}#post #article-container .tip a {  color: rgb(36, 35, 35) !important;  font-weight: bold;  border-color: hotpink;  /* border-radius: 2px; */  border-bottom-style: solid;}/* #post #article-container a > u{  border-bottom: solid;  border-color: hotpink;} */#post #article-container .tip a:hover{  background-color: hotpink !important;  border-radius: 8px;}/* 文章全屏 */.post .layout {    max-width: none;}/* 侧边栏目录样式 */.aside-content #card-toc {  font-family: TXGBlog;  overflow: auto;}/* 文章tabs */#article-container .tabs {  margin: 1rem 0!important;  border-radius: 12px;  overflow: hidden;  box-shadow: red;  border: 1px solid #ccd0d7 !important;}#article-container .tabs > .nav-tabs > .tab.active button {  border-bottom: 2px solid #49b1f5;  border-top: none;}#article-container .tabs > .nav-tabs > .tab button {  border-top: none;}/*哔哩哔哩视频适配*/.aspect-ratio {position: relative;width: 100%;height: 0;padding-bottom: 75%;margin: 3% auto;text-align: center;}      .aspect-ratio iframe {    position: absolute;    width: 100%;    height: 100%;    left: 0;    top: 0;}/* 折叠框中的文字 */details.folding-tag {  font-size: 16px !important;}#article-container img {  margin: 0 auto!important;}#post #article-container a.ghcard {  border-bottom-style: none;}/* code中的字体大小 */#article-container pre, #article-container code {  font-size: 16px;}/* tip 样式新增 class */.tip.green {  background: linear-gradient(230deg, #47c0e0, #2dc342);  text-shadow: 0 -1px #1bcdfc;  box-shadow: 0 3px 5px #20b1ad;}.tip.green::before {  background: linear-gradient(230deg, #47c0e0, #2dc342);  text-shadow: 0 -1px #1bcdfc;  /* box-shadow: 0 3px 5px #20b1ad; */}#article-container code {  font-family: TXG !important;}span.nota:hover{  color: orange !important;}span.nota {  color: pink !important;}]]></content>
       
     </entry>
     
@@ -483,17 +361,6 @@
     
     <entry>
       <title></title>
-      <link href="/css/tag-link.css"/>
-      <url>/css/tag-link.css</url>
-      
-        <content type="html"><![CDATA[#article-container .tag-Link {    background: var(--heo-secondbg);    border-radius: 8px!important;    display: flex;    border: var(--style-border);    flex-direction: column;    padding: 0.5rem 1rem;    border-width: 1px!important;    margin-top: 1rem;    background-color: rgb(237,240,247);    font-family: TXGBlog;  }    #post #article-container a.tag-Link {    border-bottom: none;  }  #post #article-container a.tag-Link:hover {    border: var(--style-border-hover);    background-color: rgb(97, 114, 227) ;  }    #article-container .tag-Link .tag-link-tips {    border-bottom: solid gray;    padding-bottom: 4px;    font-size: 0.6rem;    color: var(--heo-gray);    font-weight: normal;  }    #article-container .tag-Link:hover .tag-link-tips {    color: var(--heo-white);  }    #article-container .tag-Link .tag-link-bottom {    display: flex;    margin-top: 0.5rem;    align-items: center;    justify-content: space-around;  }    #article-container .tag-Link .tag-link-bottom .tag-link-left {    width: 60px;    min-width: 60px;    height: 60px;    background-size: cover;  }    #article-container .tag-Link .tag-link-bottom .tag-link-right {    margin-left: 1rem;  }    #article-container .tag-Link .tag-link-bottom .tag-link-right .tag-link-title {    font-size: 1rem;    line-height: 1.2;  }    #article-container .tag-Link .tag-link-bottom .tag-link-right .tag-link-sitename {    font-size: 0.7rem;    color: var(--heo-gray);    font-weight: normal;    margin-top: 4px;  }    #article-container .tag-Link:hover .tag-link-bottom .tag-link-right .tag-link-sitename {    color: var(--heo-white);  }    #article-container .tag-Link .tag-link-bottom i {    margin-left: auto;  }]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/css/scroll.css"/>
       <url>/css/scroll.css</url>
       
@@ -504,11 +371,11 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title></title>
+      <link href="/css/tag-link.css"/>
+      <url>/css/tag-link.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[#article-container .tag-Link {    background: var(--heo-secondbg);    border-radius: 8px!important;    display: flex;    border: var(--style-border);    flex-direction: column;    padding: 0.5rem 1rem;    border-width: 1px!important;    margin-top: 1rem;    background-color: rgb(237,240,247);    font-family: TXGBlog;  }    #post #article-container a.tag-Link {    border-bottom: none;  }  #post #article-container a.tag-Link:hover {    border: var(--style-border-hover);    background-color: rgb(97, 114, 227) ;  }    #article-container .tag-Link .tag-link-tips {    border-bottom: solid gray;    padding-bottom: 4px;    font-size: 0.6rem;    color: var(--heo-gray);    font-weight: normal;  }    #article-container .tag-Link:hover .tag-link-tips {    color: var(--heo-white);  }    #article-container .tag-Link .tag-link-bottom {    display: flex;    margin-top: 0.5rem;    align-items: center;    justify-content: space-around;  }    #article-container .tag-Link .tag-link-bottom .tag-link-left {    width: 60px;    min-width: 60px;    height: 60px;    background-size: cover;  }    #article-container .tag-Link .tag-link-bottom .tag-link-right {    margin-left: 1rem;  }    #article-container .tag-Link .tag-link-bottom .tag-link-right .tag-link-title {    font-size: 1rem;    line-height: 1.2;  }    #article-container .tag-Link .tag-link-bottom .tag-link-right .tag-link-sitename {    font-size: 0.7rem;    color: var(--heo-gray);    font-weight: normal;    margin-top: 4px;  }    #article-container .tag-Link:hover .tag-link-bottom .tag-link-right .tag-link-sitename {    color: var(--heo-white);  }    #article-container .tag-Link .tag-link-bottom i {    margin-left: auto;  }]]></content>
       
     </entry>
     
@@ -530,7 +397,7 @@
       <link href="/js/runtime.min.js"/>
       <url>/js/runtime.min.js</url>
       
-        <content type="html"><![CDATA[var now = new Date;function createtime() {    var t = new Date("10/2/2022 00:00:00");    now.setTime(now.getTime() + 250);    var e = (now - t) / 1e3 / 60 / 60 / 24,        a = Math.floor(e),        n = (now - t) / 1e3 / 60 / 60 - 24 * a,        r = Math.floor(n);    1 == String(r).length && (r = "0" + r);    var s = (now - t) / 1e3 / 60 - 1440 * a - 60 * r,        i = Math.floor(s);    1 == String(i).length && (i = "0" + i);    var o = (now - t) / 1e3 - 86400 * a - 3600 * r - 60 * i,        l = Math.round(o);    1 == String(l).length && (l = "0" + l);    let g = "";    g = r < 18 && r >= 9 ? `<img class='boardsign' src='/svg/TXG-嘎油嘎油.svg' title='do something different~'><span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>` : `<img class='boardsign' src='/svg/TXG-mua我的lkpttxg.svg' title='下班了就该开开心心的玩耍，嘿嘿~'><span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`, document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = g)}setInterval((() => {    createtime()}), 250);]]></content>
+        <content type="html"><![CDATA[var now = new Date;function createtime() {    var t = new Date("10/2/2022 00:00:00");    now.setTime(now.getTime() + 250);    var e = (now - t) / 1e3 / 60 / 60 / 24,        a = Math.floor(e),        n = (now - t) / 1e3 / 60 / 60 - 24 * a,        r = Math.floor(n);    1 == String(r).length && (r = "0" + r);    var s = (now - t) / 1e3 / 60 - 1440 * a - 60 * r,        i = Math.floor(s);    1 == String(i).length && (i = "0" + i);    var o = (now - t) / 1e3 - 86400 * a - 3600 * r - 60 * i,        l = Math.round(o);    1 == String(l).length && (l = "0" + l);    let g = "";    g = r < 18 && r >= 9 ? `<img class='boardsign' src='/svg/TXG-嘎油嘎油.svg' title='欢迎小妞~'><span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>` : `<img class='boardsign' src='/svg/TXG-mua我的lkpttxg.svg' title='下班了就该开开心心的玩耍，嘿嘿~'><span class='textTip'> <br> 本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`, document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = g)}setInterval((() => {    createtime()}), 250);]]></content>
       
     </entry>
     
