@@ -1,14 +1,1 @@
-/* 返回顶部 */
-
-button#post-percent #percent {
-    display: block;
-    font-weight: bold;
-    font-size: 15px !important;
-}
-
-button#post-percent span {
-    font-size: 12px!important;
-    margin-right: -1px;
-}
-
-
+button#post-percent #percent{display:block;font-weight:700;font-size:15px!important}button#post-percent span{font-size:12px!important;margin-right:-1px}
